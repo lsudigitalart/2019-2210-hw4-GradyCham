@@ -49,10 +49,10 @@ function draw(){
 	}
 	
 	if (ballX < player1X || ballX> player2X){
-		if (ballX < 0){
+		if (ballX < player1X){
 		    player2Score++;
 	    }
-	    if (ballX > 1000){
+	    if (ballX > player2X){
 	    	player1Score++;
 	    }
 		ballX = 500;
