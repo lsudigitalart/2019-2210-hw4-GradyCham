@@ -42,13 +42,13 @@ function draw(){
 	rect (player1X, player1Y, 50, 200);
 	rect (player2X, player2Y, 50, 200);
 
-	print (speed);
+	print (directionX, speed);
 	if (oneTime !== 0){
-		ballX += (speed * directionX);
-		ballY += (speed * directionY);
+		ballX += (abs(speed)* directionX);
+		ballY += (abs(speed) * directionY);
 	}
 	
-	if (ballX < 0 || ballX> 1000){
+	if (ballX < player1X || ballX> player2X){
 		if (ballX < 0){
 		    player2Score++;
 	    }
@@ -69,34 +69,36 @@ function draw(){
 	
 	if (ballX - 48 < player1X + 50){
 		if (ballY + 50 > player1Y && ballY-50 < player1Y+ 200){
-		    directionX *= -1;
+		    
 
-			if (ballY + 50 > player1Y + 100){
-			    directionY *= -1;
-			}
+			//if (ballY + 50 > player1Y + 100){
+			//    directionY *= -1;
+			//}
 			if (player1X < 50){
-				speed +=2;
+				speed = abs(speed) + 2;
 			}
 			else if (player1X > 50 && speed > 5){
-				speed -=2;
+				speed = abs(speed) - 2;
 			}
+			directionX *= -1;
 	    }
 	}
 
 	if (ballX +48 > player2X){
 		if (ballY + 50 > player2Y && ballY-50 < player2Y+ 200){
-		    directionX *= -1;
+		    
 			
-			if (ballY + 50 > player2Y + 100){
-			    directionY *= -1;
-			}
+			//if (ballY + 50 > player2Y + 100){
+			//    directionY *= -1;
+			//}
 			
-			if (player2X < 900 && speed < -5){
-				speed +=2;
+			if (player2X < 900 && abs(speed) > 5){
+				speed = abs(speed) - 2;
 			}
 			else if (player2X > 900) {
-				speed -=2;
+				speed = abs(speed)+ 2;
 			}
+			directionX *= -1;
 	    }
 	}
 	
